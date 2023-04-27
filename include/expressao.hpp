@@ -21,30 +21,30 @@ class Expressao {
     /// armazenar a expressão se esta for válida (seja em notação infixa ou posfixa).
     /// @param exp Uma string com no máximo 1000 caracteres, onde os números
     /// e operadores estão separados por espaço.
-    /// @return EXPRESSAO OK : exp - caso a expressão seja lida e armazenada com sucesso;
-    /// ERRO : EXP NAO VALIDA - caso a expressão não veja válida e não armazenada.
+    /// @return 'EXPRESSAO OK : <EXP>' - caso a expressão seja lida e armazenada com sucesso;
+    /// 'ERRO : EXP NAO VALIDA' - caso a expressão não veja válida e não armazenada.
 
     int ler(string exp);
 
     /// @brief Operação de converter a expressão armazenada no programa para
     /// notação infixa (notação usual). Esta operação deve acrescentar os
     /// parênteses necessários.
-    /// @return INFIXA : EXP - caso a conversão seja realizada com sucesso;
-    /// ERRO : EXP NAO EXISTE - caso não haja expressão armazenada.
+    /// @return 'INFIXA : <EXP>' - caso a conversão seja realizada com sucesso;
+    /// 'ERRO : EXP NAO EXISTE' - caso não haja expressão armazenada.
     int infixa();
     
     /// @brief Operação de converter a expressão armazenada no programa
     /// para notação posfixa (notação polonesa).
-    /// @return POSFIXA : EXP - caso a conversão seja realizada com sucesso;
-    /// ERRO : EXP NAO EXISTE - caso não haja expressão armazenada.
+    /// @return 'POSFIXA : <EXP>' - caso a conversão seja realizada com sucesso;
+    /// 'ERRO : EXP NAO EXISTE' - caso não haja expressão armazenada.
     int posfixa();
     
     /// @brief Operação de resolver a expressão armazenada no programa.
     /// Esta operação deve computar o valor representado pela expressão
     /// armazenada no programa.
 
-    /// @return POSFIXA : VAL - caso a conversão seja realizada com sucesso;
-    /// ERRO : EXP NAO EXISTE - caso não haja expressão armazenada.
+    /// @return 'POSFIXA : <VAL>' - caso a conversão seja realizada com sucesso;
+    /// 'ERRO : EXP NAO EXISTE' - caso não haja expressão armazenada.
     float resolve();
 
 
