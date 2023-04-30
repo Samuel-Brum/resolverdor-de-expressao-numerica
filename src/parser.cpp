@@ -1,16 +1,13 @@
 #include "parser.hpp"
 
 bool verificaInfixo(string expressao) {
-  std::string::size_type i, n = expressao.length();
+  string::size_type i, n = expressao.length();
   int contador = 0;
   bool num = false;
   bool decimal = false;
 
   for (i = 0; i < n; i++) {
     char c = expressao[i];
-  if (i == 180) { 
-    int teste = 1;
-  }
     if (isspace(c)) {
       continue; // ignora espaços
     }
@@ -63,6 +60,47 @@ bool verificaInfixo(string expressao) {
   
   if (contador != 0) {
     return false; // parentesis não fecham
+  }
+
+  return true;
+}
+
+bool verificaPosfixo(string expressao) {
+  string::size_type i, n = expressao.length();
+  int count = 0;
+  bool decimal = false;
+
+  for (i = 0; i < n; i++) {
+    char c = expressao[i];
+
+    if (isspace(c)) {
+      decimal = false;
+      continue; // ignora espaços
+    }
+
+    if (isdigit(c)) {
+      if (!decimal) {
+        count ++;
+      }
+    } else if (c == '.') {
+        if (decimal) {
+          return false; // mais de um ponto decimal no número
+        }
+        decimal = true;
+    } else if (c == '+' || c == '-' || c == '*' || c == '/') {
+      decimal = false;
+      count -= 2;
+      if (count < 0) {
+        return false; // operadores demais
+      }
+      count++;
+    } else {
+      return false; // caractere inválido
+    }
+  }
+
+  if (count != 1) {
+    return false; // expressão não resolve em um número
   }
 
   return true;
