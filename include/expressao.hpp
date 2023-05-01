@@ -1,5 +1,5 @@
-#ifndef EXPRESSAO_H
-#define EXPRESSAO_H
+#ifndef EXPRESSAO_HPP
+#define EXPRESSAO_HPP
 
 #include <iostream>
 #include <string>
@@ -46,8 +46,6 @@ class Expressao {
     /// @return 'POSFIXA : <VAL>' - caso a conversão seja realizada com sucesso;
     /// 'ERRO : EXP NAO EXISTE' - caso não haja expressão armazenada.
     float resolve();
-
-
 
   private:
     string exp;
