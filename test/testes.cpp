@@ -25,29 +25,36 @@ string s15n10 = "( ( ( ( 6.937834 ) + ( 0.627732 ) ) / ( 6.479817 ) ) - ( ( ( ( 
 // cout << "Infixo '1 1': " << verificaInfixo("1 1") << endl; // TODO: bug - verificaInfixo não lida com casos assim
 // cout << "Posfixo '1 1': " << verificaPosfixo("1 1") << endl;
 
-TEST_CASE("Verificador Infixo faz asserções corretas para os casos base") {
-  REQUIRE(verificaInfixo(s1n5) == true);
-  REQUIRE(verificaInfixo(s3n5) == true);
-  REQUIRE(verificaInfixo(s5n5) == true);
-  REQUIRE(verificaInfixo(s7n5) == true);
-  REQUIRE(verificaInfixo(s11n10) == true);
-  REQUIRE(verificaInfixo(s13n10) == true);
-  REQUIRE(verificaInfixo(s15n10) == true);
+TEST_CASE("Verificador Infixo faz asserções corretas") {
+  SUBCASE("Casos base") {
+    REQUIRE(verificaInfixo(s1n5) == true);
+    REQUIRE(verificaInfixo(s3n5) == true);
+    REQUIRE(verificaInfixo(s5n5) == true);
+    REQUIRE(verificaInfixo(s7n5) == true);
+    REQUIRE(verificaInfixo(s11n10) == true);
+    REQUIRE(verificaInfixo(s13n10) == true);
+    REQUIRE(verificaInfixo(s15n10) == true);
+  }
+
+  SUBCASE("Casos borda") {
+    REQUIRE(verificaInfixo("") == false);
+    REQUIRE(verificaInfixo("1 1") == false);
+  }
 }
 
-TEST_CASE("Verificador Posfixo faz asserções corretas para os casos base") {
-  REQUIRE(verificaPosfixo(s2n5) == true);
-  REQUIRE(verificaPosfixo(s4n5) == true);
-  REQUIRE(verificaPosfixo(s6n5) == true);
-  REQUIRE(verificaPosfixo(s8n5) == true);
-  REQUIRE(verificaPosfixo(s12n10) == true);
-  REQUIRE(verificaPosfixo(s14n10) == true);
+TEST_CASE("Verificador Posfixo faz asserções corretas") {
+  SUBCASE("Casos base") {
+    REQUIRE(verificaPosfixo(s2n5) == true);
+    REQUIRE(verificaPosfixo(s4n5) == true);
+    REQUIRE(verificaPosfixo(s6n5) == true);
+    REQUIRE(verificaPosfixo(s8n5) == true);
+    REQUIRE(verificaPosfixo(s12n10) == true);
+    REQUIRE(verificaPosfixo(s14n10) == true);
+  }
+
+  SUBCASE("Casos borda") {
+    REQUIRE(verificaPosfixo("") == false);
+    REQUIRE(verificaPosfixo("1 1") == false);
+  }
 }
 
-TEST_CASE("Verificador Infixo retorna falso para o caso vazio") {
-  REQUIRE(verificaInfixo("") == false);
-}
-
-TEST_CASE("Verificador Posfixo retorna falso para o caso vazio") {
-  REQUIRE(verificaPosfixo("") == false);
-}

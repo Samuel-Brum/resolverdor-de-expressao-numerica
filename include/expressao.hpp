@@ -23,7 +23,6 @@ class Expressao {
     /// e operadores estão separados por espaço.
     /// @return 'EXPRESSAO OK : <EXP>' - caso a expressão seja lida e armazenada com sucesso;
     /// 'ERRO : EXP NAO VALIDA' - caso a expressão não veja válida e não armazenada.
-
     int ler(string exp);
 
     /// @brief Operação de converter a expressão armazenada no programa para
