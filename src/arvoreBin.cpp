@@ -1,7 +1,7 @@
 #include "arvoreBin.hpp"
 
 ArvoreBinaria::ArvoreBinaria() {
-  this->raiz = NULL;
+  this->raiz = nullptr;
 }
 
 ArvoreBinaria::~ArvoreBinaria() {
@@ -9,14 +9,14 @@ ArvoreBinaria::~ArvoreBinaria() {
 }
 
 bool ArvoreBinaria::estaVazio() {
-  if (this->raiz == NULL) {
+  if (this->raiz == nullptr) {
     return true;
   } else {
     return false;
   }
 }
 
-void ArvoreBinaria::inserir(char c) {
+void ArvoreBinaria::inserir(string c) {
 
 }
 

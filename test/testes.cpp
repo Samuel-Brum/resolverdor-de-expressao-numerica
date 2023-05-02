@@ -1,8 +1,9 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.hpp"
 
-#include "expVerifier.hpp"
 #include <string>
+#include "expVerifier.hpp"
+#include "pilha.hpp"
 
 using std::string;
 
@@ -39,6 +40,11 @@ string s36n50 = "2.599367  9.647195  9.673411  9.050032  /  6.358308  -  8.65117
 string s37n50 = "( ( ( ( 3.704752 ) / ( ( ( ( ( ( 2.093473 ) - ( ( ( 0.656896 ) + ( ( ( 7.650847 ) / ( 8.517779 ) ) + ( 8.484577 ) ) ) / ( ( 3.570724 ) + ( ( 6.603947 ) / ( 2.708906 ) ) ) ) ) * ( ( ( ( 3.016434 ) / ( ( ( ( 2.070670 ) / ( 2.665045 ) ) + ( 1.967283 ) ) + ( 7.795605 ) ) ) - ( 4.774478 ) ) - ( ( 6.962198 ) * ( 3.061824 ) ) ) ) + ( ( ( 9.850194 ) * ( 1.000052 ) ) * ( 9.909937 ) ) ) - ( 0.916214 ) ) * ( ( ( ( 4.766712 ) / ( ( 5.124133 ) - ( ( 3.814624 ) / ( 1.406076 ) ) ) ) - ( ( 3.346784 ) / ( 1.001288 ) ) ) - ( 7.251864 ) ) ) ) + ( ( ( 1.967363 ) - ( ( 3.966477 ) * ( 9.794267 ) ) ) - ( ( ( ( 0.469069 ) / ( 5.014094 ) ) * ( 5.376427 ) ) + ( ( ( ( ( 3.885523 ) * ( 4.918825 ) ) / ( 0.137457 ) ) - ( 4.551664 ) ) - ( ( 2.848862 ) / ( 3.331082 ) ) ) ) ) ) / ( ( 5.881610 ) * ( ( 2.011348 ) + ( ( ( 6.988997 ) / ( 1.617092 ) ) - ( 6.379946 ) ) ) ) )";
 string s38n50 = "2.668160  3.299435  5.577647  7.362147  *  7.919122  *  8.490275  8.332728  2.033447  *  /  -  /  /  2.387488  0.684457  4.372958  2.226028  /  8.153083  +  *  -  +  8.386214  /  9.354012  6.724427  *  1.525728  6.133841  2.985069  -  -  8.340931  -  1.530226  +  *  *  1.269565  2.045418  /  9.573261  +  7.561658  *  -  7.381152  /  6.284854  4.061986  /  /  5.954917  1.260094  8.387910  +  6.903085  /  5.802291  -  2.891419  -  *  2.144825  4.160590  *  /  6.450664  3.949879  /  7.150766  +  +  *  2.942184  8.179270  -  0.803171  9.760576  *  5.895433  /  -  8.016547  -  *";
 
+string parentesisExtra = "( ( ( 9.904341 ) + ( ( 5.733451 ) - ( 0.641665 ) ) ) - ( ( 2.165881 ) + ( 1.404730 ) ) ) - ( ( 5.732986 ) + ( ( 5.938726 ) - ( 8.993233 ) ) ) )";
+string parentesisFaltando = "( ( ( ( 9.904341 ) + ( ( 5.733451 ) - ( 0.641665 ) ) ) - ( ( 2.165881 ) + ( 1.404730 ) ) ) - ( ( 5.732986  + ( ( 5.938726 ) - ( 8.993233 ) ) ) )";
+string pontoDecimalExtra = "( ( ( 9.904341 ) + ( ( 5.733451 ) - ( 0.641665 ) ) ) - ( ( 2.16.5881 ) + ( 1.404730 ) ) ) - ( ( 5.732986 ) + ( ( 5.938726 ) - ( 8.993233 ) ) ) )";
+string operadorExtra = "( ( ( 9.904341 ) + ( ( 5.733451 ) - ( 0.641665 ) ) ) - ( ( 2.165881 ) + ( 1.404730 ) ) ) - ( ( 5.732986 ) + ( ( 5.938726 ) - ( 8.993233 ) / ) ) )";
+string numeroExtra = "( ( ( 9.904341 ) + ( ( 5.733451 ) - ( 0.641665 ) ) ) - ( ( 2.165881 ) + ( 1.404730 ) (4.253098 ) ) ) - ( ( 5.732986 ) + ( ( 5.938726 ) - ( 8.993233 ) ) ) )";
 
 // cout << "Infixo '1 1': " << verificaInfixo("1 1") << endl; // TODO: bug - verificaInfixo não lida com casos assim
 // cout << "Posfixo '1 1': " << verificaPosfixo("1 1") << endl;
@@ -62,11 +68,19 @@ TEST_CASE("Verificador Infixo faz asserções corretas") {
     REQUIRE(verificaInfixo(s35n50) == true);
     REQUIRE(verificaInfixo(s37n50) == true);    
   }
+    
+  SUBCASE("Casos incorretos") {
+    REQUIRE(verificaInfixo(parentesisExtra) == false);
+    REQUIRE(verificaInfixo(parentesisFaltando) == false);
+    REQUIRE(verificaInfixo(pontoDecimalExtra) == false);
+    REQUIRE(verificaInfixo(operadorExtra) == false);
+    REQUIRE(verificaInfixo(numeroExtra) == false);
+  }
 
   SUBCASE("Casos borda") {
     REQUIRE(verificaInfixo("") == false);
-    WARN(verificaInfixo("1 1") == false);
     REQUIRE(verificaInfixo("caracteres inválidos") == false);
+    WARN(verificaInfixo("1 1") == false); // sem pontos decimais!!
   }
 }
 
@@ -92,8 +106,22 @@ TEST_CASE("Verificador Posfixo faz asserções corretas") {
 
   SUBCASE("Casos borda") {
     REQUIRE(verificaPosfixo("") == false);
-    REQUIRE(verificaPosfixo("1 1") == false);
     REQUIRE(verificaPosfixo("caracteres inválidos") == false);
+    REQUIRE(verificaPosfixo("1 1") == false); // sem pontos decimais!!
+  }
+
+  SUBCASE("Casos incorretos") {
+    REQUIRE(verificaPosfixo(parentesisExtra) == false);
+    REQUIRE(verificaPosfixo(parentesisFaltando) == false);
+    REQUIRE(verificaPosfixo(pontoDecimalExtra) == false);
+    REQUIRE(verificaPosfixo(operadorExtra) == false);
+    REQUIRE(verificaPosfixo(numeroExtra) == false);
+  }
+}
+
+TEST_CASE("Classe Pilha funciona como esperado") {
+  SUBCASE(""){
+    
   }
 }
 

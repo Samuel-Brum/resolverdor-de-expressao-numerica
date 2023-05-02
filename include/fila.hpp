@@ -2,25 +2,15 @@
 #define FILA_HPP
 
 class Fila {
-  Fila() {
+  Fila();
+  
+  bool estaVazia();
 
-  }
+  void enfileirar(char token);
 
-  bool estaVazia() {
+  void desenfileirar(char token);
 
-  }
-
-  void enfileirar(char token) {
-
-  }
-
-  void desenfileirar(char token) {
-
-  }
-
-  void limpar() {
-
-  }
+  void limpar();
 };
 
 #endif

@@ -2,6 +2,9 @@
 #define ARVOREBIN_HPP
 
 #include <iostream>
+#include <string>
+
+using std::string;
 
 class ArvoreBinaria {
   public:
@@ -11,18 +14,18 @@ class ArvoreBinaria {
     
     bool estaVazio();
 
-    void inserir(char c);
+    void inserir(string c);
 
     void caminhar();
 
   private:
-    struct Node {
-      Node* esquerdo;
-      Node* direito;  
-      char token;
+    struct NodeArvoreBin {
+      NodeArvoreBin* esquerdo;
+      NodeArvoreBin* direito;  
+      string token;
     };
 
-    Node* raiz;
+    NodeArvoreBin* raiz;
 };
 
 
