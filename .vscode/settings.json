@@ -62,6 +62,16 @@
       "cwd": "/home/sam_brum/Documents/UFMG/Graduação - Computação /2023-1/Estrutura de Dados/Trabalho prático 1/TP/bin",
       "binaryPath": "/home/sam_brum/Documents/UFMG/Graduação - Computação /2023-1/Estrutura de Dados/Trabalho prático 1/TP/bin/expNum",
       "binaryArgs": []
+    },
+    {
+      "cwd": "/home/sam_brum/Documents/UFMG/Graduação - Computação /2023-1/Estrutura de Dados/Trabalho prático 1/TP/bin",
+      "binaryPath": "/home/sam_brum/Documents/UFMG/Graduação - Computação /2023-1/Estrutura de Dados/Trabalho prático 1/TP/bin/testes",
+      "binaryArgs": []
+    },
+    {
+      "cwd": "/home/sam_brum/Documents/UFMG/Graduação - Computação /2023-1/Estrutura de Dados/Trabalho prático 1/TP/bin",
+      "binaryPath": "/home/sam_brum/Documents/UFMG/Graduação - Computação /2023-1/Estrutura de Dados/Trabalho prático 1/TP/bin/expressaoNumerica",
+      "binaryArgs": []
     }
   ]
 }
