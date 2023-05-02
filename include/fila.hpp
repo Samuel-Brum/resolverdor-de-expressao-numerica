@@ -2,7 +2,7 @@
 #define FILA_HPP
 
 class Fila {
-  Fila::Fila() {
+  Fila() {
 
   }
 

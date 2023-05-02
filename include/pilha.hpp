@@ -2,7 +2,7 @@
 #define PILHA_HPP
 
 class Pilha {
-  Pilha::Pilha() {
+  Pilha() {
     
   }
 
