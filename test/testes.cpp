@@ -5,6 +5,7 @@
 #include "expVerifier.hpp"
 #include "pilha.hpp"
 #include "fila.hpp"
+#include "shuntingYard.hpp"
 
 using std::string;
 
@@ -175,7 +176,7 @@ TEST_CASE("Classe Fila funciona como esperado") {
     CHECK(fila.desenfileirar() == "+");
     CHECK(fila.desenfileirar() == "2.72912");
     CHECK(fila.desenfileirar() == "*");
-    CHECK(fila.desenfileirar() == ")"); // desempilha na ordem esperada
+    CHECK(fila.desenfileirar() == ")"); // desefileira na ordem esperada
   }
 
   SUBCASE("Método limpar remove todos os elementos da fila") {
@@ -192,3 +193,54 @@ TEST_CASE("Classe Fila funciona como esperado") {
   }
 }
 
+void testTokenIdentifier(string expressao) {
+  Fila teste = tokenIdentifier(expressao);
+  for (int i = 0; i < expressao.length(); i++) {
+    char c = expressao[i];
+    int numCheck = false;
+    string floatNum;
+    if (isspace(c)){
+      if (numCheck = true) {
+        CHECK(teste.desenfileirar() == floatNum);
+        floatNum = "";
+        numCheck = false;
+      }
+      continue;
+    }
+    if(c == '(') {
+      CHECK(teste.desenfileirar() == "(");
+      numCheck = false;
+    } 
+    if(c == ')') {
+      CHECK(teste.desenfileirar() == ")");
+      numCheck = false;
+    }
+    if(c == '+') {
+      CHECK(teste.desenfileirar() == "+");
+      numCheck = false;
+    }
+    if(c == '-') {
+      CHECK(teste.desenfileirar() == "-");
+      numCheck = false;
+    }
+    if(c == '*') {
+      CHECK(teste.desenfileirar() == "*");
+      numCheck = false;
+    }
+    if(c == '/') {
+      CHECK(teste.desenfileirar() == "/");
+      numCheck = false;
+    }
+    if(isdigit(c) || c == '.') {
+      floatNum += c;
+      numCheck = true;
+    }
+  }
+}
+
+TEST_CASE("TokenIdentifier separa termos de uma expressão numérica") {
+
+  SUBCASE("s1n5"){
+    testTokenIdentifier(s1n5);
+  }
+}

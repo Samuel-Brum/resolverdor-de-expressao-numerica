@@ -6,7 +6,7 @@
 
   // deve definir qual foi o tipo de input e criar a estrutura de árvore
   // deve verificar se o formato é válido
-int Parser::ler(string exp) {
+void ler(string exp) {
   if (verificaInfixo(exp)) {
     // converte para estado intermediário em notação pósfixa (shunting-yard)
     // constrói arvore 
@@ -15,5 +15,4 @@ int Parser::ler(string exp) {
   } else {
     std::cout << "ERRO - Expressão inválida" << std::endl;
   }
-  return 0;
 }

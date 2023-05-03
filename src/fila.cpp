@@ -39,4 +39,4 @@ void Fila::limpar() {
   while (tamanho > 0) {
     this->desenfileirar();
   }
-}
+} // TODO: vazamento de memória -> mudar implementação
