@@ -22,7 +22,7 @@ void Pilha::empilhar(string token) {
 
 string Pilha::desempilhar() {
   if (this->estaVazia()) {
-    return "";
+    return ""; // alterar para throw?
   }
   string temp = this->topo->token;
   NodePilha* p = this->topo;
@@ -33,7 +33,7 @@ string Pilha::desempilhar() {
 }
 
 void Pilha::limpar() {
-  while(this->topo != nullptr) {
+  while(!this->estaVazia()) {
     this->desempilhar();
   }
 }

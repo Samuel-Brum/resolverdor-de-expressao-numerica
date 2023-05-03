@@ -4,6 +4,7 @@
 #include <string>
 #include "expVerifier.hpp"
 #include "pilha.hpp"
+#include "fila.hpp"
 
 using std::string;
 
@@ -152,6 +153,42 @@ TEST_CASE("Classe Pilha funciona como esperado") {
 
     pilha.limpar();
     CHECK(pilha.estaVazia() == true);
+  }
+}
+
+TEST_CASE("Classe Fila funciona como esperado") {
+  Fila fila;
+  REQUIRE(fila.estaVazia() == true); // fila inicializa vazia
+
+  SUBCASE("Método enfileirar adiciona elementos à fila corretamente") {
+    fila.enfileirar("(");
+    fila.enfileirar("3.1253");
+    fila.enfileirar("4.86529");
+    fila.enfileirar("+");
+    fila.enfileirar("2.72912");
+    fila.enfileirar("*");
+    fila.enfileirar(")");
+
+    CHECK(fila.desenfileirar() == "(");
+    CHECK(fila.desenfileirar() == "3.1253");
+    CHECK(fila.desenfileirar() == "4.86529");
+    CHECK(fila.desenfileirar() == "+");
+    CHECK(fila.desenfileirar() == "2.72912");
+    CHECK(fila.desenfileirar() == "*");
+    CHECK(fila.desenfileirar() == ")"); // desempilha na ordem esperada
+  }
+
+  SUBCASE("Método limpar remove todos os elementos da fila") {
+    fila.enfileirar("(");
+    fila.enfileirar("3.1253");
+    fila.enfileirar("4.86529");
+    fila.enfileirar("+");
+    fila.enfileirar("2.72912");
+    fila.enfileirar("*");
+    fila.enfileirar(")");
+
+    fila.limpar();
+    CHECK(fila.estaVazia() == true);
   }
 }
 

@@ -28,13 +28,12 @@ class Fila {
   private:
     /// @brief Células da fila
     struct NodeFila {
-      NodeFila* proximo;
-      string token;
+      NodeFila* proximo = nullptr;
+      string token = "";
     };
 
     NodeFila* frente;
     NodeFila* tras;
-    int tamanho;
 };
 
 #endif
