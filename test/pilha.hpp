@@ -20,12 +20,14 @@ class Pilha {
     void empilhar(string token);
 
     /// @brief remove caractere do topo da pilha
-    void desempilhar();
+    /// @return elemento removido, ou uma string vazia caso a pilha esteja vazia
+    string desempilhar();
 
     /// @brief remove todos os elementos da pilha
     void limpar();
 
   private:
+    /// @brief Célula da pilha
     struct NodePilha{
       NodePilha* proximo;
       string token;

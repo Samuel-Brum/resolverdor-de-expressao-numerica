@@ -6,6 +6,7 @@
 
 using std::string;
 
+/// @brief Estrutura de pilha encadeada de strings
 class Pilha {
   public:
     /// @brief Construtor da pilha
@@ -20,13 +21,14 @@ class Pilha {
     void empilhar(string token);
 
     /// @brief remove caractere do topo da pilha
-    void desempilhar();
+    string desempilhar();
 
     /// @brief remove todos os elementos da pilha
     void limpar();
 
   private:
-    struct NodePilha{
+    /// @brief Célula da pilha
+    struct NodePilha {
       NodePilha* proximo;
       string token;
     };

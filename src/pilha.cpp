@@ -13,18 +13,23 @@ bool Pilha::estaVazia() {
 }
 
 void Pilha::empilhar(string token) {
-  NodePilha* nova;
+  NodePilha* nova = new NodePilha;
 
   nova->token = token;
   nova->proximo = topo;
   topo = nova;
 }
 
-void Pilha::desempilhar() {
+string Pilha::desempilhar() {
   if (this->estaVazia()) {
-    return;
+    return "";
   }
+  string temp = this->topo->token;
+  NodePilha* p = this->topo;
   this->topo = this->topo->proximo;
+  delete p;
+  
+  return temp;
 }
 
 void Pilha::limpar() {

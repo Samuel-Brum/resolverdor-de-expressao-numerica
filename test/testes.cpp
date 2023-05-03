@@ -51,77 +51,107 @@ string numeroExtra = "( ( ( 9.904341 ) + ( ( 5.733451 ) - ( 0.641665 ) ) ) - ( (
 
 TEST_CASE("Verificador Infixo faz asserções corretas") {
   SUBCASE("Casos base") {
-    REQUIRE(verificaInfixo(s1n5) == true);
-    REQUIRE(verificaInfixo(s3n5) == true);
-    REQUIRE(verificaInfixo(s5n5) == true);
-    REQUIRE(verificaInfixo(s7n5) == true);
-    REQUIRE(verificaInfixo(s11n10) == true);
-    REQUIRE(verificaInfixo(s13n10) == true);
-    REQUIRE(verificaInfixo(s15n10) == true);
-    REQUIRE(verificaInfixo(s17n10) == true);
-    REQUIRE(verificaInfixo(s21n25) == true);
-    REQUIRE(verificaInfixo(s23n25) == true);
-    REQUIRE(verificaInfixo(s25n25) == true);
-    REQUIRE(verificaInfixo(s27n25) == true);
-    REQUIRE(verificaInfixo(s31n50) == true);
-    REQUIRE(verificaInfixo(s33n50) == true);
-    REQUIRE(verificaInfixo(s35n50) == true);
-    REQUIRE(verificaInfixo(s37n50) == true);    
+    CHECK(verificaInfixo(s1n5) == true);
+    CHECK(verificaInfixo(s3n5) == true);
+    CHECK(verificaInfixo(s5n5) == true);
+    CHECK(verificaInfixo(s7n5) == true);
+    CHECK(verificaInfixo(s11n10) == true);
+    CHECK(verificaInfixo(s13n10) == true);
+    CHECK(verificaInfixo(s15n10) == true);
+    CHECK(verificaInfixo(s17n10) == true);
+    CHECK(verificaInfixo(s21n25) == true);
+    CHECK(verificaInfixo(s23n25) == true);
+    CHECK(verificaInfixo(s25n25) == true);
+    CHECK(verificaInfixo(s27n25) == true);
+    CHECK(verificaInfixo(s31n50) == true);
+    CHECK(verificaInfixo(s33n50) == true);
+    CHECK(verificaInfixo(s35n50) == true);
+    CHECK(verificaInfixo(s37n50) == true);    
   }
     
   SUBCASE("Casos incorretos") {
-    REQUIRE(verificaInfixo(parentesisExtra) == false);
-    REQUIRE(verificaInfixo(parentesisFaltando) == false);
-    REQUIRE(verificaInfixo(pontoDecimalExtra) == false);
-    REQUIRE(verificaInfixo(operadorExtra) == false);
-    REQUIRE(verificaInfixo(numeroExtra) == false);
+    CHECK(verificaInfixo(parentesisExtra) == false);
+    CHECK(verificaInfixo(parentesisFaltando) == false);
+    CHECK(verificaInfixo(pontoDecimalExtra) == false);
+    CHECK(verificaInfixo(operadorExtra) == false);
+    CHECK(verificaInfixo(numeroExtra) == false);
   }
 
   SUBCASE("Casos borda") {
-    REQUIRE(verificaInfixo("") == false);
-    REQUIRE(verificaInfixo("caracteres inválidos") == false);
+    CHECK(verificaInfixo("") == false);
+    CHECK(verificaInfixo("caracteres inválidos") == false);
     WARN(verificaInfixo("1 1") == false); // sem pontos decimais!!
   }
 }
 
 TEST_CASE("Verificador Posfixo faz asserções corretas") {
   SUBCASE("Casos base") {
-    REQUIRE(verificaPosfixo(s2n5) == true);
-    REQUIRE(verificaPosfixo(s4n5) == true);
-    REQUIRE(verificaPosfixo(s6n5) == true);
-    REQUIRE(verificaPosfixo(s8n5) == true);
-    REQUIRE(verificaPosfixo(s12n10) == true);
-    REQUIRE(verificaPosfixo(s14n10) == true);
-    REQUIRE(verificaPosfixo(s16n10) == true);
-    REQUIRE(verificaPosfixo(s18n10) == true);
-    REQUIRE(verificaPosfixo(s22n25) == true);
-    REQUIRE(verificaPosfixo(s24n25) == true);
-    REQUIRE(verificaPosfixo(s26n25) == true);
-    REQUIRE(verificaPosfixo(s28n25) == true);
-    REQUIRE(verificaPosfixo(s32n50) == true);
-    REQUIRE(verificaPosfixo(s34n50) == true);
-    REQUIRE(verificaPosfixo(s36n50) == true);
-    REQUIRE(verificaPosfixo(s38n50) == true);
+    CHECK(verificaPosfixo(s2n5) == true);
+    CHECK(verificaPosfixo(s4n5) == true);
+    CHECK(verificaPosfixo(s6n5) == true);
+    CHECK(verificaPosfixo(s8n5) == true);
+    CHECK(verificaPosfixo(s12n10) == true);
+    CHECK(verificaPosfixo(s14n10) == true);
+    CHECK(verificaPosfixo(s16n10) == true);
+    CHECK(verificaPosfixo(s18n10) == true);
+    CHECK(verificaPosfixo(s22n25) == true);
+    CHECK(verificaPosfixo(s24n25) == true);
+    CHECK(verificaPosfixo(s26n25) == true);
+    CHECK(verificaPosfixo(s28n25) == true);
+    CHECK(verificaPosfixo(s32n50) == true);
+    CHECK(verificaPosfixo(s34n50) == true);
+    CHECK(verificaPosfixo(s36n50) == true);
+    CHECK(verificaPosfixo(s38n50) == true);
   }
 
   SUBCASE("Casos borda") {
-    REQUIRE(verificaPosfixo("") == false);
-    REQUIRE(verificaPosfixo("caracteres inválidos") == false);
-    REQUIRE(verificaPosfixo("1 1") == false); // sem pontos decimais!!
+    CHECK(verificaPosfixo("") == false);
+    CHECK(verificaPosfixo("caracteres inválidos") == false);
+    CHECK(verificaPosfixo("1 1") == false); // sem pontos decimais!!
   }
 
   SUBCASE("Casos incorretos") {
-    REQUIRE(verificaPosfixo(parentesisExtra) == false);
-    REQUIRE(verificaPosfixo(parentesisFaltando) == false);
-    REQUIRE(verificaPosfixo(pontoDecimalExtra) == false);
-    REQUIRE(verificaPosfixo(operadorExtra) == false);
-    REQUIRE(verificaPosfixo(numeroExtra) == false);
+    CHECK(verificaPosfixo(parentesisExtra) == false);
+    CHECK(verificaPosfixo(parentesisFaltando) == false);
+    CHECK(verificaPosfixo(pontoDecimalExtra) == false);
+    CHECK(verificaPosfixo(operadorExtra) == false);
+    CHECK(verificaPosfixo(numeroExtra) == false);
   }
 }
 
 TEST_CASE("Classe Pilha funciona como esperado") {
-  SUBCASE(""){
-    
+  Pilha pilha;
+  REQUIRE(pilha.estaVazia() == true); // pilha inicializa vazia
+
+  SUBCASE("Método empilhar adiciona elementos à pilha corretamente") {
+    pilha.empilhar("(");
+    pilha.empilhar("3.1253");
+    pilha.empilhar("4.86529");
+    pilha.empilhar("+");
+    pilha.empilhar("2.72912");
+    pilha.empilhar("*");
+    pilha.empilhar(")");
+
+    CHECK(pilha.desempilhar() == ")");
+    CHECK(pilha.desempilhar() == "*");
+    CHECK(pilha.desempilhar() == "2.72912");
+    CHECK(pilha.desempilhar() == "+");
+    CHECK(pilha.desempilhar() == "4.86529");
+    CHECK(pilha.desempilhar() == "3.1253");
+    CHECK(pilha.desempilhar() == "("); // desempilha na ordem esperada
+  }
+
+  SUBCASE("Método limpar remove todos os elementos da pilha") {
+    pilha.empilhar("(");
+    pilha.empilhar("3.1253");
+    pilha.empilhar("4.86529");
+    pilha.empilhar("+");
+    pilha.empilhar("2.72912");
+    pilha.empilhar("*");
+    pilha.empilhar(")");
+
+    pilha.limpar();
+    CHECK(pilha.estaVazia() == true);
   }
 }
 
