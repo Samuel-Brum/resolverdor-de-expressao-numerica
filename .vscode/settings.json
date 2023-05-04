@@ -50,7 +50,9 @@
     "sstream": "cpp",
     "stdexcept": "cpp",
     "streambuf": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "list": "cpp",
+    "unordered_set": "cpp"
   },
   "makefile.launchConfigurations": [
     {
@@ -70,6 +72,11 @@
     },
     {
       "cwd": "/home/sam_brum/Documents/UFMG/Graduação - Computação /2023-1/Estrutura de Dados/Trabalho prático 1/TP/bin",
+      "binaryPath": "/home/sam_brum/Documents/UFMG/Graduação - Computação /2023-1/Estrutura de Dados/Trabalho prático 1/TP/bin/expressaoNumerica",
+      "binaryArgs": []
+    },
+    {
+      "cwd": "/home/sam_brum/Documents/UFMG/Graduação - Computação /2023-1/Estrutura de Dados/Trabalho prático 1/TP",
       "binaryPath": "/home/sam_brum/Documents/UFMG/Graduação - Computação /2023-1/Estrutura de Dados/Trabalho prático 1/TP/bin/expressaoNumerica",
       "binaryArgs": []
     }

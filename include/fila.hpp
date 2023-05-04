@@ -24,6 +24,8 @@ class Fila {
 
     /// @brief Remove e desaloca todos os elementos da fila
     void limpar();
+
+    int sizeOf();
   
   private:
     /// @brief Células da fila

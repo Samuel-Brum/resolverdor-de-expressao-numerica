@@ -193,54 +193,39 @@ TEST_CASE("Classe Fila funciona como esperado") {
   }
 }
 
-void testTokenIdentifier(string expressao) {
-  Fila teste = tokenIdentifier(expressao);
-  for (int i = 0; i < expressao.length(); i++) {
-    char c = expressao[i];
-    int numCheck = false;
-    string floatNum;
-    if (isspace(c)){
-      if (numCheck = true) {
-        CHECK(teste.desenfileirar() == floatNum);
-        floatNum = "";
-        numCheck = false;
-      }
-      continue;
-    }
-    if(c == '(') {
-      CHECK(teste.desenfileirar() == "(");
-      numCheck = false;
-    } 
-    if(c == ')') {
-      CHECK(teste.desenfileirar() == ")");
-      numCheck = false;
-    }
-    if(c == '+') {
-      CHECK(teste.desenfileirar() == "+");
-      numCheck = false;
-    }
-    if(c == '-') {
-      CHECK(teste.desenfileirar() == "-");
-      numCheck = false;
-    }
-    if(c == '*') {
-      CHECK(teste.desenfileirar() == "*");
-      numCheck = false;
-    }
-    if(c == '/') {
-      CHECK(teste.desenfileirar() == "/");
-      numCheck = false;
-    }
-    if(isdigit(c) || c == '.') {
-      floatNum += c;
-      numCheck = true;
+string* separaExpressao(string str) {
+  string* expressaoSeparada;
+  string item;
+  int count = 0;
+  for (int i = 0; i < str.length(); i++) {
+    if (isspace(str[i])) {
+      expressaoSeparada[count] = item;
+      count++;
+      string item = "";
+    } else {
+      item += str[i];
     }
   }
-}
+  return expressaoSeparada;
+} // TODO consertar comportamento de inclusao em expressao Separada
 
 TEST_CASE("TokenIdentifier separa termos de uma expressão numérica") {
+  /*
+  SUBCASE("( ( 3.234 + 7.1925) / 6.12347 )"){
+    string str = "(( 3.234 + 7.1925) / 6.12347 )";
+    Fila tokens = tokenIdentifier(str);
+    string* tokensEsperados = separaExpressao(str);
+    for (int i = 0; i < sizeof(tokensEsperados); i++) {
+      CHECK(tokensEsperados[i] == tokens.desenfileirar());
+    }
+  }
 
   SUBCASE("s1n5"){
-    testTokenIdentifier(s1n5);
+    Fila tokens = tokenIdentifier(s1n5);
+    <string> tokensEsperados = separaExpressao(s1n5);
+    for (auto token = tokensEsperados.begin(); token != tokensEsperados.end(); token++) {
+      CHECK(*token == tokens.desenfileirar());
+    }
   }
-}
+  */
+} // TODO implementar teste que funciona

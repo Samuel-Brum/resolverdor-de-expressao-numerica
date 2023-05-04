@@ -6,6 +6,10 @@ Fila::Fila() {
   this->tamanho = 0;
 }
 
+int Fila::sizeOf() {
+  return this->tamanho;
+}
+
 bool Fila::estaVazia() {
   if (tamanho == 0) {
     return true;
@@ -15,12 +19,14 @@ bool Fila::estaVazia() {
 }
 
 void Fila::enfileirar(string token) {
-  NodeFila* nova = new NodeFila;
-  nova->proximo = nullptr;
-  nova->token = token;
-  this->tras->proximo = nova;
-  tras = nova;
-  tamanho++;
+  if (token != "") {
+    NodeFila* nova = new NodeFila;
+    nova->proximo = nullptr;
+    nova->token = token;
+    this->tras->proximo = nova;
+    tras = nova;
+    tamanho++;
+  }
 }
 
 string Fila::desenfileirar() {
