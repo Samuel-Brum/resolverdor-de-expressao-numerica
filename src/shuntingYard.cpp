@@ -42,25 +42,47 @@ Fila shuntingYard(Fila tokens) {
   int tamanho = tokens.sizeOf();
   Pilha operadores = Pilha();
   Fila posfixo  = Fila();
+  bool numCheck = false;
+  string floatNum = "";
 
   for (int i = 0; i < tamanho; i++) {
     string token = tokens.desenfileirar();
     if (isdigit(token[0]) || token == ".") {
-      posfixo.enfileirar(token);
-      continue;
+      if (numCheck == true) {
+        floatNum += token;
+      } else {
+        floatNum = token;
+        numCheck = true;
+      }
     } else if (token == "*" || token == "/"){
+      if (numCheck == true) {
+        posfixo.enfileirar(floatNum);
+        numCheck = false;
+      }
       operadores.empilhar(token);
       continue;
     } else if (token == "+" || token == "-") {
+      if (numCheck == true) {
+        posfixo.enfileirar(floatNum);
+        numCheck = false;
+      }
       while ((operadores.getTopo() == "*" || operadores.getTopo() == "/")){
         posfixo.enfileirar(operadores.desempilhar());
       }
       operadores.empilhar(token);
       continue;
     } else if (token == "(") {
+      if (numCheck == true) {
+        posfixo.enfileirar(floatNum);
+        numCheck = false;
+      }
       operadores.empilhar(token);
       continue;
     } else if (token == ")") {
+      if (numCheck == true) {
+        posfixo.enfileirar(floatNum);
+        numCheck = false;
+      }
       while (operadores.getTopo() != "(") {
         posfixo.enfileirar(operadores.desempilhar());
       }
@@ -69,6 +91,10 @@ Fila shuntingYard(Fila tokens) {
     }
   }
   while (!(operadores.estaVazia())) {
+    if (numCheck == true) {
+        posfixo.enfileirar(floatNum);
+        numCheck = false;
+      }
     posfixo.enfileirar(operadores.desempilhar());
   }
   return posfixo;

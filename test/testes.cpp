@@ -227,26 +227,28 @@ TEST_CASE("shuntingYard funciona corretamente") {
   SUBCASE("(3 + 6) * (2 - 4) + 7") {
     string expressao = "(3 + 6) * (2 - 4) + 7";
     Fila testCase = tokenIdentifier(expressao);
-    string outputCorreto = "36+24-*7+";
+    string outputCorreto = "3 6 + 2 4 - * 7 + ";
     Fila posfixo = shuntingYard(testCase);
     string outputTeste = "";
     int tamanho = posfixo.sizeOf();
     
     for (int i = 0; i < tamanho; i++) {
       outputTeste += posfixo.desenfileirar();
+      outputTeste += " ";
     }
     CHECK(outputTeste == outputCorreto);
   }
 
   SUBCASE("s1n5") {
     Fila testCase = tokenIdentifier(s1n5);
-    string outputCorreto = "9.9043415.7334510.641665-+2.1658811.404730+-5.7329865.9387268.993233-+-";
+    string outputCorreto = "9.904341 5.733451 0.641665 - + 2.165881 1.404730 + - 5.732986 5.938726 8.993233 - + - ";
     Fila posfixo = shuntingYard(testCase);
     string outputTeste = "";
     int tamanho = posfixo.sizeOf();
     
     for (int i = 0; i < tamanho; i++) {
       outputTeste += posfixo.desenfileirar();
+      outputTeste += " ";
     }
     CHECK(outputTeste == outputCorreto);
   }

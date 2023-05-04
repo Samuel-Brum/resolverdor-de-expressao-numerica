@@ -15,6 +15,7 @@ int main (int argc, char* argv[]) {
   teste = shuntingYard(teste);
   for (int i = 0; i < tamanho; i++) {
     identificados += teste.desenfileirar();
+    identificados += " ";
   }
   std::cout << identificados << std::endl;
 }
