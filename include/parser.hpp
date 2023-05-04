@@ -7,6 +7,7 @@
 #include "fila.hpp"
 #include "pilha.hpp"
 #include "shuntingYard.hpp"
+#include "arvoreBin.hpp"
 
 using std::string;
 

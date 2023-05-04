@@ -6,6 +6,7 @@
 #include "pilha.hpp"
 #include "fila.hpp"
 #include "shuntingYard.hpp"
+#include "arvoreBin.hpp"
 
 using std::string;
 
@@ -70,6 +71,25 @@ TEST_CASE("Verificador Infixo faz asserções corretas") {
     CHECK(verificaInfixo(s35n50) == true);
     CHECK(verificaInfixo(s37n50) == true);    
   }
+
+  SUBCASE("Rejeita expressões posfixas") {
+    CHECK(verificaInfixo(s2n5) == false);
+    CHECK(verificaInfixo(s4n5) == false);
+    CHECK(verificaInfixo(s6n5) == false);
+    CHECK(verificaInfixo(s8n5) == false);
+    CHECK(verificaInfixo(s12n10) == false);
+    CHECK(verificaInfixo(s14n10) == false);
+    CHECK(verificaInfixo(s16n10) == false);
+    CHECK(verificaInfixo(s18n10) == false);
+    CHECK(verificaInfixo(s22n25) == false);
+    CHECK(verificaInfixo(s24n25) == false);
+    CHECK(verificaInfixo(s26n25) == false);
+    CHECK(verificaInfixo(s28n25) == false);
+    CHECK(verificaInfixo(s32n50) == false);
+    CHECK(verificaInfixo(s34n50) == false);
+    CHECK(verificaInfixo(s36n50) == false);
+    CHECK(verificaInfixo(s38n50) == false);
+  }
     
   SUBCASE("Casos incorretos") {
     CHECK(verificaInfixo(parentesisExtra) == false);
@@ -104,6 +124,25 @@ TEST_CASE("Verificador Posfixo faz asserções corretas") {
     CHECK(verificaPosfixo(s34n50) == true);
     CHECK(verificaPosfixo(s36n50) == true);
     CHECK(verificaPosfixo(s38n50) == true);
+  }
+
+  SUBCASE("Rejeita casos infixos") {
+    CHECK(verificaPosfixo(s1n5) == false);
+    CHECK(verificaPosfixo(s3n5) == false);
+    CHECK(verificaPosfixo(s5n5) == false);
+    CHECK(verificaPosfixo(s7n5) == false);
+    CHECK(verificaPosfixo(s11n10) == false);
+    CHECK(verificaPosfixo(s13n10) == false);
+    CHECK(verificaPosfixo(s15n10) == false);
+    CHECK(verificaPosfixo(s17n10) == false);
+    CHECK(verificaPosfixo(s21n25) == false);
+    CHECK(verificaPosfixo(s23n25) == false);
+    CHECK(verificaPosfixo(s25n25) == false);
+    CHECK(verificaPosfixo(s27n25) == false);
+    CHECK(verificaPosfixo(s31n50) == false);
+    CHECK(verificaPosfixo(s33n50) == false);
+    CHECK(verificaPosfixo(s35n50) == false);
+    CHECK(verificaPosfixo(s37n50) == false);    
   }
 
   SUBCASE("Casos borda") {
