@@ -8,7 +8,7 @@ Fila tokenIdentifier(string expressao) {
     char c = expressao[i];
 
     if (isspace(c)){
-      if ((numCheck = true)) {
+      if (numCheck == true) {
         filaTokens.enfileirar(floatNum);
         floatNum = "";
         numCheck = false;
@@ -18,22 +18,24 @@ Fila tokenIdentifier(string expressao) {
       if(isdigit(c) || c == '.') {
         floatNum += c;
         numCheck = true;
+        if (i == expressao.length() -1) {
+          filaTokens.enfileirar(floatNum);
+        }
       } else {
         if (numCheck == true) {
           filaTokens.enfileirar(floatNum);
           floatNum = "";
-          numCheck = false;
-          filaTokens.enfileirar(string(1,c));
-          continue;
         }
         filaTokens.enfileirar(string(1,c));
+        numCheck = false;
+        if (floatNum != "" && numCheck == true) {
+          filaTokens.enfileirar(floatNum);
+          floatNum = "";
+          numCheck = false;
+        }
       }
     }
-    if (numCheck == true) {
-      filaTokens.enfileirar(floatNum);
-      floatNum = "";
-      numCheck = false;
-    }
+    
   }
   return filaTokens;
 }

@@ -195,31 +195,78 @@ TEST_CASE("Classe Fila funciona como esperado") {
 
 
 TEST_CASE("TokenIdentifier separa termos de uma expressão numérica") {
-  SUBCASE("(3.2 + 6.5) * (2.1 - 4.7) + 7.9") {
-    string expressao = "(3.2 + 6.5) * (2.1 - 4.7) + 7.9";
+  SUBCASE("(3 + 6) * (2 - 4) + 7") {
+    string expressao = "(3 + 6) * (2 - 4) + 7";
     Fila testCase = tokenIdentifier(expressao);
-    string outputCorreto = "(3.2+6.5)*(2.1-4.7)+7.9";
+    string outputCorreto = "( 3 + 6 ) * ( 2 - 4 ) + 7 ";
     string outputTeste = "";
     int tamanho = testCase.sizeOf();
 
     for (int i = 0; i < tamanho; i++) {
       outputTeste += testCase.desenfileirar();
+      outputTeste += " ";
     }
 
-    CHECK(outputCorreto == outputTeste);
+    CHECK(outputTeste == outputCorreto);
+  }
+
+  SUBCASE("(3.2 + 6.5) * (2.1 - 4.7) + 7.9") {
+    string expressao = "(3.2 + 6.5) * (2.1 - 4.7) + 7.9";
+    Fila testCase = tokenIdentifier(expressao);
+    string outputCorreto = "( 3.2 + 6.5 ) * ( 2.1 - 4.7 ) + 7.9 ";
+    string outputTeste = "";
+    int tamanho = testCase.sizeOf();
+
+    for (int i = 0; i < tamanho; i++) {
+      outputTeste += testCase.desenfileirar();
+      outputTeste += " ";
+    }
+
+    CHECK(outputTeste == outputCorreto);
+  }
+
+  SUBCASE("3 6 + 2 4 - * 7 +") {
+    string expressao = "3 6 + 2 4 - * 7 +";
+    Fila testCase = tokenIdentifier(expressao);
+    string outputCorreto = "3 6 + 2 4 - * 7 + ";
+    string outputTeste = "";
+    int tamanho = testCase.sizeOf();
+
+    for (int i = 0; i < tamanho; i++) {
+      outputTeste += testCase.desenfileirar();
+      outputTeste += " ";
+    }
+
+    CHECK(outputTeste == outputCorreto);
+  }
+
+  SUBCASE("3.2 6.5 + 2.3 4.4 - * 7.9 +") {
+    string expressao = "3.2 6.5 + 2.3 4.4 - * 7.9 +";
+    Fila testCase = tokenIdentifier(expressao);
+    string outputCorreto = "3.2 6.5 + 2.3 4.4 - * 7.9 + ";
+    string outputTeste = "";
+    int tamanho = testCase.sizeOf();
+
+    for (int i = 0; i < tamanho; i++) {
+      outputTeste += testCase.desenfileirar();
+      outputTeste += " ";
+    }
+
+    CHECK(outputTeste == outputCorreto);
   }
 
    SUBCASE("s1n5") {
     Fila testCase = tokenIdentifier(s1n5);
-    string outputCorreto = "((((9.904341)+((5.733451)-(0.641665)))-((2.165881)+(1.404730)))-((5.732986)+((5.938726)-(8.993233))))";
+    string outputCorreto = "( ( ( ( 9.904341 ) + ( ( 5.733451 ) - ( 0.641665 ) ) ) - ( ( 2.165881 ) + ( 1.404730 ) ) ) - ( ( 5.732986 ) + ( ( 5.938726 ) - ( 8.993233 ) ) ) ) ";
     string outputTeste = "";
     int tamanho = testCase.sizeOf();
 
     for (int i = 0; i < tamanho; i++) {
       outputTeste += testCase.desenfileirar();
+      outputTeste += " ";
     }
 
-    CHECK(outputCorreto == outputTeste);
+    CHECK(outputTeste == outputCorreto);
   }
 } 
 

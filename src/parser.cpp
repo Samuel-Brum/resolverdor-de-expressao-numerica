@@ -8,10 +8,12 @@
   // deve verificar se o formato é válido
 void ler(string exp) {
   if (verificaInfixo(exp)) {
-    // converte para estado intermediário em notação pósfixa (shunting-yard)
-    // constrói arvore 
+    Fila tokens = tokenIdentifier(exp);
+    Fila posfixo = shuntingYard(tokens);
+    // constrói arvore
   } else if (verificaPosfixo(exp)) {
-    // constrói arvore 
+    tokenIdentifier(exp);
+    // constrói arvore
   } else {
     std::cout << "ERRO - Expressão inválida" << std::endl;
   }
