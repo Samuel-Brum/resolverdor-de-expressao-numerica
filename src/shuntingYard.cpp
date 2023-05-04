@@ -45,7 +45,7 @@ Fila shuntingYard(Fila tokens) {
 
   for (int i = 0; i < tamanho; i++) {
     string token = tokens.desenfileirar();
-    if (isdigit(token[0])) {
+    if (isdigit(token[0]) || token == ".") {
       posfixo.enfileirar(token);
       continue;
     } else if (token == "*" || token == "/"){

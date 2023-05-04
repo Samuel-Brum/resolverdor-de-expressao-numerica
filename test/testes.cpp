@@ -249,6 +249,5 @@ TEST_CASE("shuntingYard funciona corretamente") {
       outputTeste += posfixo.desenfileirar();
     }
     CHECK(outputTeste == outputCorreto);
-
   }
 }
