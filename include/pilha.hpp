@@ -16,6 +16,10 @@ class Pilha {
     /// @return String no topo da pilha
     string getTopo();
 
+    /// @brief Retorna tamanho da pilha
+    /// @return Tamanho da Pilha
+    int sizeOf();
+
     /// @brief Verifica se pilha está vazia
     /// @return true caso esteja, false caso contrário
     bool estaVazia();
@@ -38,6 +42,7 @@ class Pilha {
     };
 
     NodePilha* topo;
+    int tamanho;
 };
 
 #endif

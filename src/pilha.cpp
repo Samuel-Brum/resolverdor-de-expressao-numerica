@@ -2,10 +2,19 @@
 
 Pilha::Pilha() {
   this->topo = nullptr;
+  this->tamanho = 0;
 }
 
 string Pilha::getTopo() {
-  return this->topo->token;
+  if ((tamanho != 0)) {
+    return this->topo->token;
+  } else {
+    return "";
+  }
+}
+
+int Pilha::sizeOf() {
+  return this->tamanho;
 }
 
 bool Pilha::estaVazia() {
@@ -22,6 +31,7 @@ void Pilha::empilhar(string token) {
   nova->token = token;
   nova->proximo = topo;
   topo = nova;
+  tamanho++;
 }
 
 string Pilha::desempilhar() {
@@ -32,6 +42,7 @@ string Pilha::desempilhar() {
   NodePilha* p = this->topo;
   this->topo = this->topo->proximo;
   delete p;
+  tamanho--;
   
   return temp;
 }

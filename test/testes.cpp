@@ -210,7 +210,7 @@ TEST_CASE("TokenIdentifier separa termos de uma expressão numérica") {
   }
 } 
 
-TEST_CASE("Shunting Yard funciona corretamente") {
+TEST_CASE("shuntingYard funciona corretamente") {
   SUBCASE("(3 + 6) * (2 - 4) + 7") {
     string expressao = "(3 + 6) * (2 - 4) + 7";
     Fila testCase = tokenIdentifier(expressao);

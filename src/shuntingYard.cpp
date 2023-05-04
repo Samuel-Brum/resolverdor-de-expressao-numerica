@@ -52,7 +52,7 @@ Fila shuntingYard(Fila tokens) {
       operadores.empilhar(token);
       continue;
     } else if (token == "+" || token == "-") {
-      while (operadores.getTopo() == "*" || operadores.getTopo() == "/"){
+      while ((operadores.getTopo() == "*" || operadores.getTopo() == "/")){
         posfixo.enfileirar(operadores.desempilhar());
       }
       operadores.empilhar(token);
