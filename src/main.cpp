@@ -8,5 +8,13 @@ int main (int argc, char* argv[]) {
   for (int i = 0; i < tamanho; i++) {
     identificados += teste.desenfileirar();
   }
-   std::cout << identificados << std::endl;
+  std::cout << identificados << std::endl;
+
+  teste = tokenIdentifier(exp);
+  identificados = "";
+  teste = shuntingYard(teste);
+  for (int i = 0; i < tamanho; i++) {
+    identificados += teste.desenfileirar();
+  }
+  std::cout << identificados << std::endl;
 }

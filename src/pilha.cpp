@@ -4,6 +4,10 @@ Pilha::Pilha() {
   this->topo = nullptr;
 }
 
+string Pilha::getTopo() {
+  return this->topo->token;
+}
+
 bool Pilha::estaVazia() {
   if (this->topo == nullptr) {
     return true;

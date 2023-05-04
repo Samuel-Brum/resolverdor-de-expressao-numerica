@@ -4,6 +4,10 @@
 #include <iostream>
 #include <string>
 
+#include "fila.hpp"
+#include "pilha.hpp"
+#include "shuntingYard.hpp"
+
 using std::string;
 
 /// @brief O programa deve armazenar essa expressão utilizando uma estrutura

@@ -12,6 +12,10 @@ class Pilha {
     /// @brief Construtor da pilha
     Pilha();
 
+    /// @brief Retorna elemento no topo da pilha
+    /// @return String no topo da pilha
+    string getTopo();
+
     /// @brief Verifica se pilha está vazia
     /// @return true caso esteja, false caso contrário
     bool estaVazia();

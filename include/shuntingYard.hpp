@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "fila.hpp"
+#include "pilha.hpp"
 
 using std::string;
 
@@ -12,6 +13,10 @@ using std::string;
 /// @return Fila com tokens separados
 Fila tokenIdentifier(string expressao);
 
-
+/// @brief Utiliza o algoritmo shunting yard para converter expressao numerica
+///        de formato infixo para posfixo;
+/// @param tokens Tokens a serem convertidos para notação polonesa reversa
+/// @return Fila de tokens ordenados em notação posfixa
+Fila shuntingYard(Fila tokens);
 
 #endif

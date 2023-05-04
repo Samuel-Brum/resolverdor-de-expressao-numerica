@@ -193,39 +193,35 @@ TEST_CASE("Classe Fila funciona como esperado") {
   }
 }
 
-string* separaExpressao(string str) {
-  string* expressaoSeparada;
-  string item;
-  int count = 0;
-  for (int i = 0; i < str.length(); i++) {
-    if (isspace(str[i])) {
-      expressaoSeparada[count] = item;
-      count++;
-      string item = "";
-    } else {
-      item += str[i];
-    }
-  }
-  return expressaoSeparada;
-} // TODO consertar comportamento de inclusao em expressao Separada
 
 TEST_CASE("TokenIdentifier separa termos de uma expressão numérica") {
-  /*
-  SUBCASE("( ( 3.234 + 7.1925) / 6.12347 )"){
-    string str = "(( 3.234 + 7.1925) / 6.12347 )";
-    Fila tokens = tokenIdentifier(str);
-    string* tokensEsperados = separaExpressao(str);
-    for (int i = 0; i < sizeof(tokensEsperados); i++) {
-      CHECK(tokensEsperados[i] == tokens.desenfileirar());
-    }
-  }
+  SUBCASE("(3.2 + 6.5) * (2.1 - 4.7) + 7.9") {
+    string expressao = "(3.2 + 6.5) * (2.1 - 4.7) + 7.9";
+    Fila testCase = tokenIdentifier(expressao);
+    string outputCorreto = "(3.2+6.5)*(2.1-4.7)+7.9";
+    string outputTeste;
+    int tamanho = testCase.sizeOf();
 
-  SUBCASE("s1n5"){
-    Fila tokens = tokenIdentifier(s1n5);
-    <string> tokensEsperados = separaExpressao(s1n5);
-    for (auto token = tokensEsperados.begin(); token != tokensEsperados.end(); token++) {
-      CHECK(*token == tokens.desenfileirar());
+    for (int i = 0; i < tamanho; i++) {
+      outputTeste += testCase.desenfileirar();
     }
+
+    CHECK(outputCorreto == outputTeste);
   }
-  */
-} // TODO implementar teste que funciona
+} 
+
+TEST_CASE("Shunting Yard funciona corretamente") {
+  SUBCASE("(3 + 6) * (2 - 4) + 7") {
+    string expressao = "(3 + 6) * (2 - 4) + 7";
+    Fila testCase = tokenIdentifier(expressao);
+    string outputCorreto = "36+24-*7+";
+    Fila posfixo = shuntingYard(testCase);
+    string outputTeste;
+    int tamanho = posfixo.sizeOf();
+    
+    for (int i = 0; i < tamanho; i++) {
+      outputTeste += posfixo.desenfileirar();
+    }
+    CHECK(outputTeste == outputCorreto);
+  }
+}
