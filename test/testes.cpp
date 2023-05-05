@@ -161,7 +161,7 @@ TEST_CASE("Verificador Posfixo faz asserções corretas") {
 }
 
 TEST_CASE("Classe Pilha funciona como esperado") {
-  Pilha pilha;
+  Pilha<string> pilha;
   REQUIRE(pilha.estaVazia() == true); // pilha inicializa vazia
 
   SUBCASE("Método empilhar adiciona elementos à pilha corretamente") {
@@ -307,7 +307,8 @@ TEST_CASE("TokenIdentifier separa termos de uma expressão numérica") {
 
     CHECK(outputTeste == outputCorreto);
   }
-} 
+} // esse teste é dependencia para os testes de shuttingYard,
+  // seria boa prática refatora-los.
 
 TEST_CASE("shuntingYard funciona corretamente") {
   SUBCASE("(3 + 6) * (2 - 4) + 7") {

@@ -1,11 +1,13 @@
 #include "pilha.hpp"
 
-Pilha::Pilha() {
+template<>
+Pilha<string>::Pilha() {
   this->topo = nullptr;
   this->tamanho = 0;
 }
 
-string Pilha::getTopo() {
+template<>
+string Pilha<string>::getTopo() {
   if ((tamanho != 0)) {
     return this->topo->token;
   } else {
@@ -13,20 +15,19 @@ string Pilha::getTopo() {
   }
 }
 
-int Pilha::sizeOf() {
+template<>
+int Pilha<string>::sizeOf() {
   return this->tamanho;
 }
 
-bool Pilha::estaVazia() {
-  if (this->topo == nullptr) {
-    return true;
-  } else {
-    return false;
-  }
+template<>
+bool Pilha<string>::estaVazia() {
+  return (this->topo == nullptr);
 }
 
-void Pilha::empilhar(string token) {
-  NodePilha* nova = new NodePilha;
+template<>
+void Pilha<string>::empilhar(string token) {
+  NodePilha<string>* nova = new NodePilha<string>;
 
   nova->token = token;
   nova->proximo = topo;
@@ -34,12 +35,13 @@ void Pilha::empilhar(string token) {
   tamanho++;
 }
 
-string Pilha::desempilhar() {
+template<>
+string Pilha<string>::desempilhar() {
   if (this->estaVazia()) {
     return ""; // alterar para throw?
   }
   string temp = this->topo->token;
-  NodePilha* p = this->topo;
+  NodePilha<string>* p = this->topo;
   this->topo = this->topo->proximo;
   delete p;
   tamanho--;
@@ -47,7 +49,8 @@ string Pilha::desempilhar() {
   return temp;
 }
 
-void Pilha::limpar() {
+template<>
+void Pilha<string>::limpar() {
   while(!this->estaVazia()) {
     this->desempilhar();
   }

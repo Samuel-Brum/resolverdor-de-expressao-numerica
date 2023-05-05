@@ -4,9 +4,6 @@ ArvoreBinaria::ArvoreBinaria() {
   this->raiz = nullptr;
 }
 
-ArvoreBinaria::~ArvoreBinaria() {
-  
-}
 
 bool ArvoreBinaria::estaVazio() {
   if (this->raiz == nullptr) {
@@ -14,6 +11,14 @@ bool ArvoreBinaria::estaVazio() {
   } else {
     return false;
   }
+}
+
+ArvoreBinaria ArvoreBinaria::construirPosfixo(Fila posfixo) {
+  // caso base
+  if (posfixo.sizeOf() == 0) {
+    return ArvoreBinaria();
+  }
+  
 }
 
 void ArvoreBinaria::inserir(string c) {

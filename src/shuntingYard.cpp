@@ -2,8 +2,8 @@
 
 Fila tokenIdentifier(string expressao) {
   Fila filaTokens = Fila();
-  string floatNum;
-  bool numCheck = false; 
+  string floatNum = "";
+  bool numCheck = false; // verifica se há um float sendo contruido
   for (long unsigned int i = 0; i < expressao.length(); i++) {
     char c = expressao[i];
 
@@ -15,24 +15,19 @@ Fila tokenIdentifier(string expressao) {
       }
       continue;
     } else {
-      if(isdigit(c) || c == '.') {
+      if(isdigit(c) || c == '.') { // incrementa numFloat com token
         floatNum += c;
         numCheck = true;
-        if (i == expressao.length() -1) {
+        if (i == expressao.length() - 1) { // caso último token seja um número
           filaTokens.enfileirar(floatNum);
         }
-      } else {
+      } else { // faz dump de floatNum e do token, nessa ordem
         if (numCheck == true) {
           filaTokens.enfileirar(floatNum);
           floatNum = "";
         }
         filaTokens.enfileirar(string(1,c));
         numCheck = false;
-        if (floatNum != "" && numCheck == true) {
-          filaTokens.enfileirar(floatNum);
-          floatNum = "";
-          numCheck = false;
-        }
       }
     }
     
@@ -42,21 +37,21 @@ Fila tokenIdentifier(string expressao) {
 
 Fila shuntingYard(Fila tokens) {
   int tamanho = tokens.sizeOf();
-  Pilha operadores = Pilha();
-  Fila posfixo  = Fila();
-  bool numCheck = false;
-  string floatNum = "";
+  Pilha<string> operadores = Pilha<string>(); // Pilha temporária para tudo que não é número
+  Fila posfixo  = Fila(); // Fila com tokens na ordem pósfixa
+  bool numCheck = false; // verifica se há um float sendo contruido
+  string floatNum = ""; 
 
   for (int i = 0; i < tamanho; i++) {
     string token = tokens.desenfileirar();
-    if (isdigit(token[0]) || token == ".") {
+    if (isdigit(token[0]) || token == ".") { // Incrementa ou cria novo floatNum
       if (numCheck == true) {
         floatNum += token;
       } else {
         floatNum = token;
         numCheck = true;
       }
-    } else if (token == "*" || token == "/"){
+    } else if (token == "*" || token == "/"){ 
       if (numCheck == true) {
         posfixo.enfileirar(floatNum);
         numCheck = false;
@@ -92,7 +87,7 @@ Fila shuntingYard(Fila tokens) {
       continue;
     }
   }
-  while (!(operadores.estaVazia())) {
+  while (!(operadores.estaVazia())) { // Faz dump de todos operadores no final
     if (numCheck == true) {
         posfixo.enfileirar(floatNum);
         numCheck = false;

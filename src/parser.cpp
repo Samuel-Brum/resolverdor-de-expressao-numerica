@@ -14,7 +14,8 @@ void ler(string exp) {
     cout << "EXPRESSAO OK :" << exp;
     Fila tokens = tokenIdentifier(exp);
     Fila posfixo = shuntingYard(tokens);
-    // constrói arvore
+    ArvoreBinaria arvore = ArvoreBinaria();
+    arvore.construirPosfixo(posfixo);
   } else if (verificaPosfixo(exp)) {
     tokenIdentifier(exp);
     // constrói arvore

@@ -6,7 +6,15 @@
 
 using std::string;
 
+template <typename T>
+struct NodePilha {
+  NodePilha* proximo;
+  T token;
+};
+
+
 /// @brief Estrutura de pilha encadeada de strings
+template <typename T>
 class Pilha {
   public:
     /// @brief Construtor da pilha
@@ -14,7 +22,7 @@ class Pilha {
 
     /// @brief Retorna elemento no topo da pilha
     /// @return String no topo da pilha
-    string getTopo();
+    T getTopo();
 
     /// @brief Retorna tamanho da pilha
     /// @return Tamanho da Pilha
@@ -26,22 +34,17 @@ class Pilha {
 
     /// @brief adiciona caractere novo ao topo da pilha
     /// @param token caractere a ser empilhado
-    void empilhar(string token);
+    void empilhar(T token);
 
     /// @brief remove caractere do topo da pilha
-    string desempilhar();
+    T desempilhar();
 
     /// @brief remove todos os elementos da pilha
     void limpar();
 
   private:
     /// @brief Célula da pilha
-    struct NodePilha {
-      NodePilha* proximo;
-      string token;
-    };
-
-    NodePilha* topo;
+    NodePilha<T>* topo;
     int tamanho;
 };
 
