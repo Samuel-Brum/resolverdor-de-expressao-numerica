@@ -12,6 +12,23 @@ struct NodePilha {
   T token;
 };
 
+struct NodeArvoreBin {
+  NodeArvoreBin* esquerdo;
+  NodeArvoreBin* direito;  
+  string token;
+
+  NodeArvoreBin(string token) {
+    this->token = token;
+    this->esquerdo = this->direito = nullptr;
+  };
+
+  NodeArvoreBin(string token, NodeArvoreBin* esquerdo, NodeArvoreBin* direito) {
+    this->token = token;
+    this->esquerdo = esquerdo;
+    this->direito = direito;
+  };
+};
+
 
 /// @brief Estrutura de pilha encadeada de strings
 template <typename T>
