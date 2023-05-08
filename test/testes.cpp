@@ -341,9 +341,8 @@ TEST_CASE("shuntingYard funciona corretamente") {
   }
 }
 
-string resolve_subroutine(string expressao) {
+void resolve_subroutine(string expressao) {
   Parser parser = Parser();
-  string expressao = "9.874522  7.929620  *  8.681109  +  5.303303  /  3.118387  7.559106  +  7.215866  /  + ";
   parser.ler(expressao, false);
   parser.resolve();
 }

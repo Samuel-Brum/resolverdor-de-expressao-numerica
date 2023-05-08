@@ -57,7 +57,23 @@
     "csignal": "cpp",
     "cstring": "cpp",
     "mutex": "cpp",
-    "thread": "cpp"
+    "thread": "cpp",
+    "any": "cpp",
+    "bitset": "cpp",
+    "cfenv": "cpp",
+    "charconv": "cpp",
+    "cinttypes": "cpp",
+    "complex": "cpp",
+    "csetjmp": "cpp",
+    "cuchar": "cpp",
+    "forward_list": "cpp",
+    "regex": "cpp",
+    "future": "cpp",
+    "scoped_allocator": "cpp",
+    "shared_mutex": "cpp",
+    "typeindex": "cpp",
+    "valarray": "cpp",
+    "variant": "cpp"
   },
   "makefile.launchConfigurations": [
     {

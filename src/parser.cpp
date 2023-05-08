@@ -1,3 +1,5 @@
+#include <iomanip>
+
 #include "parser.hpp"
 #include "expVerifier.hpp"
 #include "pilha.hpp"
@@ -28,9 +30,7 @@ void Parser::ler(string exp, bool print) {
       }
       this->expInterna = tokenIdentifier(exp);
     } else {
-      if (print) {
         cout << "ERRO - Expressão inválida" << endl;
-      }
     }
 }
 
@@ -98,5 +98,5 @@ void Parser::resolve() {
   } else {
     this->ler(this->expInfixa, false);
   }
-  cout << "VAL: " << pilha.desempilhar() << endl;
+  cout << "VAL: " << std::fixed << std::setprecision(6)<< pilha.desempilhar() << endl;
 } 
