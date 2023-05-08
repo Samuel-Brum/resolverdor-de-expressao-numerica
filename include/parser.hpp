@@ -25,7 +25,7 @@ public:
   /// e operadores estão separados por espaço.
   /// @return 'EXPRESSAO OK : <EXP>' - caso a expressão seja lida e armazenada com sucesso;
   /// 'ERRO : EXP NAO VALIDA' - caso a expressão não veja válida e não armazenada.
-  void ler(string exp);
+  void ler(string exp, bool print = true);
 
   /// @brief Operação de converter a expressão armazenada no programa para
   /// notação infixa (notação usual). Esta operação deve acrescentar os
@@ -43,9 +43,9 @@ public:
   /// @brief Operação de resolver a expressão armazenada no programa.
   /// Esta operação deve computar o valor representado pela expressão
   /// armazenada no programa.
-  /// @return 'POSFIXA : <VAL>' - caso a conversão seja realizada com sucesso;
+  /// @return 'VAL : <EXP>' - caso a conversão seja realizada com sucesso;
   /// 'ERRO : EXP NAO EXISTE' - caso não haja expressão armazenada.
-  float resolve();
+  void resolve();
 
 private:
 
