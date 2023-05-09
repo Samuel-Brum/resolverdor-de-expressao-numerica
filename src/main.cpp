@@ -2,8 +2,7 @@
 
 #include "parser.hpp"
 
-using std::cin;
-
+using std:: cin;
 
 int main (int argc, char* argv[]) {
   Parser parser = Parser();

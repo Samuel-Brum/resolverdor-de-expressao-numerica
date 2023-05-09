@@ -17,19 +17,19 @@ Parser::Parser() {
 
 void Parser::ler(string exp, bool print) {
   if (verificaInfixo(exp)) {
-      this->expInfixa = exp;
+      this->expInfixa = exp; // string interna para salvar forma infixa
       if (print) {
         cout << "EXPRESSÃO OK: " << exp << endl;
       }
-      Fila tokens = tokenIdentifier(exp);
+      Fila tokens = tokenIdentifier(exp); 
       this->expInterna = shuntingYard(tokens);
     } else if (verificaPosfixo(exp)) {
-      this->expPosfixa = exp;
+      this->expPosfixa = exp; // string interna para salvar forma pósfixa
       if (print) {
         cout << "EXPRESSÃO OK: " << exp << endl;
       }
       this->expInterna = tokenIdentifier(exp);
-    } else {
+    } else if (print){
         cout << "ERRO - Expressão inválida" << endl;
     }
 }
@@ -63,7 +63,8 @@ void Parser::infixa() {
     }
     this->expInfixa = pilha.desempilhar();
   }
-  this->ler(this->expPosfixa, false);
+  this->ler(this->expPosfixa, false); // necessário pois desempilhar remove o elemento
+                                      // possível alteração
   cout << "INFIXA: " << this->expInfixa << endl;
 }
 
@@ -94,9 +95,9 @@ void Parser::resolve() {
     }
   }
   if (this->expPosfixa != "") {
-      this->ler(this->expPosfixa, 1);
+      this->ler(this->expPosfixa, false);
   } else {
     this->ler(this->expInfixa, false);
-  }
+  } // necessário pois desempilhar remove o elemento
   cout << "VAL: " << std::fixed << std::setprecision(6)<< pilha.desempilhar() << endl;
 } 

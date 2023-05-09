@@ -55,7 +55,7 @@ EXE := bin/expressaoNumerica # nome do executavel do projeto
 TEST_EXE := bin/testes # nome dos executavel de testes
 
 $(EXE): $(OBJECTS) $(HEADERS) # Alvo do executavel do projeto
-	$(CXX) -o $(EXE) $(OBJECTS) 
+	$(CXX) -o $(EXE) $(OBJECTS)
 
 obj/%.o: src/%.cpp $(HEADERS) # Alvos dos arquivos .o intermediários
 	$(CXX) $(CXXFLAGS) $< -o $@

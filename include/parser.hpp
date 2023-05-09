@@ -23,6 +23,8 @@ public:
   /// armazenar a expressão se esta for válida (seja em notação infixa ou posfixa).
   /// @param exp Uma string com no máximo 1000 caracteres, onde os números
   /// e operadores estão separados por espaço.
+  /// @param print Opcional, default = true. Faz com que a expressão imprima mensagens
+  /// no terminal.
   /// @return 'EXPRESSAO OK : <EXP>' - caso a expressão seja lida e armazenada com sucesso;
   /// 'ERRO : EXP NAO VALIDA' - caso a expressão não veja válida e não armazenada.
   void ler(string exp, bool print = true);
